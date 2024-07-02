@@ -2,7 +2,7 @@
 
 ## Projeto
 
-Este repositório contém exemplos de configuração para bancos de dados SQL e Redis usando Docker. Inclui arquivos Dockerfile para SQL e Redis, além de um docker-compose.yml para iniciar os serviços de forma rápida e fácil.
+Este repositório contém exemplos de configuração para bancos de dados SQL e phpMyAdmin usando Docker. Inclui arquivos Dockerfile para SQL e phpMyAdmin, além de um docker-compose.yml para iniciar os serviços de forma rápida e fácil.
 
 ## Estrutura do Projeto
 projeto/
@@ -11,9 +11,9 @@ projeto/
 
 ├── docker-compose.yml # Arquivo de definição do Docker Compose
 
-├── Dockerfile.sql # Exemplo de Dockerfile para banco de dados SQL
+├── sql.Dockerfile # Exemplo de Dockerfile para banco de dados SQL
 
-├── Dockerfile.redis # Exemplo de Dockerfile para Redis
+├── phpmyadmin.Dockerfile # Exemplo de Dockerfile para Redis
 
 ├── README.md # Documentação principal do projeto
 
@@ -27,5 +27,4 @@ projeto/
 Para iniciar o serviço SQL, execute o seguinte comando:
 
 ```bash
-docker-compose up -d sql
-docker-compose up -d redis
+docker-compose up -d
