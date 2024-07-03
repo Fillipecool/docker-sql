@@ -1,0 +1,43 @@
+services:
+  mariadb:
+    build:
+      context: .
+      dockerfile: mariadb.Dockerfile
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - default
+
+  phpmyadmin:
+    build:
+      context: .
+      dockerfile: phpmyadmin.Dockerfile
+    container_name: phpmyadmin
+    restart: always
+    links:
+      - mariadb
+    ports:
+      - "9000:80"
+    environment:
+      TZ: America/Sao_Paulo
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+    volumes:
+      - ./docker/:/etc/apache2/sites-available/
+      - ./phpmyadmin/config.inc.php:/var/www/html/config.inc.php
+    depends_on:
+      - mariadb 
+    networks:
+      - default
+
+networks:
+  default:
