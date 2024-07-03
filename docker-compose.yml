@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: mariadb.Dockerfile
+    container_name: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
@@ -32,6 +33,7 @@ services:
       PMA_PORT: 3306
     volumes:
       - ./docker/:/etc/apache2/sites-available/
+      - ./phpmyadmin/config.inc.php:/var/www/html/config.inc.php
     depends_on:
       - mariadb 
     networks:

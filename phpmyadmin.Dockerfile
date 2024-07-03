@@ -18,6 +18,7 @@ RUN apt-get update -y && apt-get install -y \
     zlib1g-dev \
     libgd-dev \
     tzdata \
+    && apt-get install -y default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Baixe e instale o phpMyAdmin diretamente do site oficial
